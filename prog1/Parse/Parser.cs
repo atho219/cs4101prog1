@@ -54,7 +54,7 @@ namespace Parse
         protected Node parseRest()
         {
             // TODO: write code for parsing a rest
-            return parseExp(scanner.getNextToken());
+            return parseRest(scanner.getNextToken());
         }
 
         // TODO: Add any additional methods you might need.
@@ -65,8 +65,6 @@ namespace Parse
                 return null;
             else if(tok.getType() == TokenType.LPAREN)
             {
-                Console.WriteLine("LPAREN");
-                Node rest = parseRest();
                 return parseRest();
             }
             else if (tok.getType() == TokenType.TRUE)
@@ -75,7 +73,7 @@ namespace Parse
                 return new BoolLit(false);
             else if (tok.getType() == TokenType.QUOTE)
             {
-                //return new Cons();
+                //return new Cons(?,?);
             }
             else if (tok.getType() == TokenType.INT)
                 return new IntLit(tok.getIntVal());
@@ -89,7 +87,10 @@ namespace Parse
         {
             if (tok == null)
                 return null;
-            else if
+            else if ()
+            {
+                //return something
+            }
         }
         
     }
