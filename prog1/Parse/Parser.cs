@@ -68,9 +68,9 @@ namespace Parse
                 return parseRest();
             }
             else if (tok.getType() == TokenType.TRUE)
-                return new BoolLit(true);                
+                return BoolLit.getBool(true);                
             else if (tok.getType() == TokenType.FALSE)
-                return new BoolLit(false);
+                return BoolLit.getBool(false);
             else if (tok.getType() == TokenType.QUOTE)
             {
                 //return new Cons(?,?);

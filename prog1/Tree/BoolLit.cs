@@ -7,10 +7,21 @@ namespace Tree
     public class BoolLit : Node
     {
         private bool boolVal;
+
+        private static BoolLit boolTrue = new BoolLit(true);
+        private static BoolLit boolFalse = new BoolLit(false);
   
         public BoolLit(bool b)
         {
             boolVal = b;
+        }
+
+        public static BoolLit getBool(bool value)
+        {
+            if (value)
+                return BoolLit.boolTrue;
+            else
+                return BoolLit.boolFalse;
         }
 
         public override bool isBool() { return true; }
