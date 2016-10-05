@@ -1,5 +1,7 @@
 // Node -- Base class for parse tree node objects
 
+using System;
+
 namespace Tree
 {
     public class Node
@@ -7,6 +9,11 @@ namespace Tree
         // The argument of print(int) is the number of characters to indent.
         // Every subclass of Node must implement print(int).
         public virtual void print(int n) { }
+        public static void printIndent(int n)
+        {
+            for (int i = 0; i < n; i++)
+                Console.Write(" ");
+        }
 
         // The first argument of print(int, bool) is the number of characters
         // to indent.  It is interpreted the same as for print(int).
@@ -40,15 +47,29 @@ namespace Tree
         public virtual bool isNull()   { return false; }  // Nil
         public virtual bool isPair()   { return false; }  // Cons
 
-        public virtual string getName() { return null; }
+        public virtual string getName() { return ""; }
 
         // TODO: Report an error in these default methods and implement them
         // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
-        // using parseList.
-        public virtual Node getCar() { return null; }
-        public virtual Node getCdr() { return null; }
-        public virtual void setCar(Node a) { }
-        public virtual void setCdr(Node d) { }
+        // using parseList. :: DONE
+        public virtual Node getCar()
+        {
+            Console.Error.WriteLine("Cant get car if not cons node");
+            return null;
+        }
+        public virtual Node getCdr()
+        {
+            Console.Error.WriteLine("Cant get cdr if not cons node");
+            return null;
+        }
+        public virtual void setCar(Node a)
+        {
+            Console.Error.WriteLine("Cant set car if not cons node");
+        }
+        public virtual void setCdr(Node d)
+        {
+            Console.Error.WriteLine("Cant set cdr if not cons node");
+        }
     }
 }
 

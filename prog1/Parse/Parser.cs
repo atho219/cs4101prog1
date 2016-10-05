@@ -93,7 +93,7 @@ namespace Parse
             }
             else
             {
-                return new Cons(parseExp(), parseNT());
+                return new Cons(parseExp(tok), parseNT());
             }
         }
 

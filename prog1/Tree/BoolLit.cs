@@ -15,10 +15,10 @@ namespace Tree
 
         private static BoolLit boolTrue = new BoolLit(true);
         private static BoolLit boolFalse = new BoolLit(false);
-
-        public static BoolLit getBool(bool value)
+        
+        public static BoolLit getBool(bool bVal)
         {
-            if (value)
+            if (bVal)
                 return BoolLit.boolTrue;
             else
                 return BoolLit.boolFalse;
@@ -28,10 +28,7 @@ namespace Tree
 
         public override void print(int n)
         {
-	    // There got to be a more efficient way to print n spaces.
-	    for (int i = 0; i < n; i++)
-                Console.Write(" ");
-
+            printIndent(n);
             if (boolVal)
                 Console.WriteLine("#t");
             else
