@@ -73,7 +73,7 @@ namespace Parse
                 return BoolLit.getBool(false);
             else if (tok.getType() == TokenType.QUOTE)
             {
-                //return new Cons(?,?);
+                return new Cons(new Ident("quote"), new Cons(parseExp(), new Nil()));
             }
             else if (tok.getType() == TokenType.INT)
                 return new IntLit(tok.getIntVal());
@@ -87,6 +87,10 @@ namespace Parse
         {
             if (tok == null)
                 return null;
+            else if (tok.getType() == TokenType.RPAREN)
+            {
+                return new Nil();
+            }
             else if ()
             {
                 //return something
