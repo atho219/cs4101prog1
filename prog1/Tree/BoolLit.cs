@@ -6,15 +6,15 @@ namespace Tree
 {
     public class BoolLit : Node
     {
-        private bool boolVal;
-
-        private static BoolLit boolTrue = new BoolLit(true);
-        private static BoolLit boolFalse = new BoolLit(false);
+        private bool boolVal;        
   
         public BoolLit(bool b)
         {
             boolVal = b;
         }
+
+        private static BoolLit boolTrue = new BoolLit(true);
+        private static BoolLit boolFalse = new BoolLit(false);
 
         public static BoolLit getBool(bool value)
         {

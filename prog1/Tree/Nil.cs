@@ -13,6 +13,13 @@ namespace Tree
             print(n, false);
         }
 
+        private static Nil nilInstance = new Nil();
+
+        public static Nil getNil()
+        {
+            return nilInstance;
+        }
+
         public override bool isNull() { return true; }
 
         public override void print(int n, bool p) {

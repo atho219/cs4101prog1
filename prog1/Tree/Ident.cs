@@ -13,7 +13,7 @@ namespace Tree
             name = n;
         }
 
-        public string getName()
+        public override string getName()
         {
             return this.name;
         }

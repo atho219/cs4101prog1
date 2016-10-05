@@ -72,15 +72,15 @@ namespace Parse
             else if (tok.getType() == TokenType.FALSE)
                 return BoolLit.getBool(false);
             else if (tok.getType() == TokenType.QUOTE)
-            {
-                return new Cons(new Ident("quote"), new Cons(parseExp(), new Nil()));
-            }
+                return new Cons(new Ident("quote"), new Cons(parseExp(), Nil.getNil()));
             else if (tok.getType() == TokenType.INT)
                 return new IntLit(tok.getIntVal());
             else if (tok.getType() == TokenType.STRING)
                 return new StringLit(tok.getStringVal());
             else if (tok.getType() == TokenType.IDENT)
                 return new Ident(tok.getName());
+            //if none of these, its dot or rparen, which should be impossible in exp
+            return parseExp();
         }
 
         protected Node parseRest(Token tok)
@@ -89,11 +89,20 @@ namespace Parse
                 return null;
             else if (tok.getType() == TokenType.RPAREN)
             {
-                return new Nil();
+                return Nil.getNil();
             }
-            else if ()
+            else
             {
-                //return something
+                return new Cons(parseExp(), parseNT());
+            }
+        }
+
+        protected Node parseNT()
+        {
+            Token tok = scanner.getNextToken();
+            if (tok.getType() == TokenType.DOT)
+            {
+                return new Cons(new )
             }
         }
         
