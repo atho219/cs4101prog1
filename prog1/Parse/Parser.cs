@@ -93,17 +93,23 @@ namespace Parse
             }
             else
             {
-                return new Cons(parseExp(tok), parseNT());
-            }
+                return new Cons(parseExp(tok), parseNT(scanner.getNextToken()));
+            } 
         }
 
-        protected Node parseNT()
+        //rest -> )
+        //       | exp NT
+        //NT   -> rest
+        //       | .exp )
+        //call parseRest or if dot: .exp )
+
+        protected Node parseNT(Token tok)
         {
-            Token tok = scanner.getNextToken();
             if (tok.getType() == TokenType.DOT)
             {
-                return new Cons(new )
-            }
+                return new Cons(parseExp(), Nil.getNil());
+            } else
+                return parseRest();
         }
         
     }
