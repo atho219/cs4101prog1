@@ -47,32 +47,38 @@ namespace Parse
   
         public Node parseExp()
         {
-            // TODO: write code for parsing an exp
+            // TODO: write code for parsing an exp :: DONE
             return parseExp(scanner.getNextToken());
         }
   
         protected Node parseRest()
         {
-            // TODO: write code for parsing a rest
+            // TODO: write code for parsing a rest :: DONE
             return parseRest(scanner.getNextToken());
         }
 
-        // TODO: Add any additional methods you might need.
+        // TODO: Add any additional methods you might need. :: DONE
 
         public Node parseExp(Token tok)
         {
             if (tok == null)
                 return null;
-            else if(tok.getType() == TokenType.LPAREN)
-            {
+            else if (tok.getType() == TokenType.LPAREN)
                 return parseRest();
-            }
             else if (tok.getType() == TokenType.TRUE)
-                return BoolLit.getBool(true);                
+                return BoolLit.getBool(true);
             else if (tok.getType() == TokenType.FALSE)
                 return BoolLit.getBool(false);
             else if (tok.getType() == TokenType.QUOTE)
-                return new Cons(new Ident("quote"), new Cons(parseExp(), Nil.getNil()));
+            {
+                Node exp = parseExp();
+                if (exp == null)
+                {
+                    Console.Error.WriteLine("End of file");
+                    return null;
+                }
+                return new Cons(new Ident("quote"), new Cons(exp, Nil.getNil()));
+            }
             else if (tok.getType() == TokenType.INT)
                 return new IntLit(tok.getIntVal());
             else if (tok.getType() == TokenType.STRING)
@@ -80,6 +86,13 @@ namespace Parse
             else if (tok.getType() == TokenType.IDENT)
                 return new Ident(tok.getName());
             //if none of these, its dot or rparen, which should be impossible in exp
+            else if (tok.getType() == TokenType.DOT)
+            {
+                Console.WriteLine("Invalid input: check dot");
+                return parseExp();
+            }
+            else
+                Console.WriteLine("Invalid input: check right parens");
             return parseExp();
         }
 
@@ -88,28 +101,48 @@ namespace Parse
             if (tok == null)
                 return null;
             else if (tok.getType() == TokenType.RPAREN)
-            {
                 return Nil.getNil();
-            }
             else
             {
-                return new Cons(parseExp(tok), parseNT(scanner.getNextToken()));
-            } 
+                Node exp = parseExp(tok);
+                if (exp == null)
+                {
+                    Console.Error.WriteLine("End of file");
+                    return null;
+                }
+                Node nt = parseNT();
+                if (nt == null)
+                {
+                    Console.Error.WriteLine("End of file");
+                    return null;
+                }
+                return new Cons(exp, nt);
+            }
         }
 
         //rest -> )
         //       | exp NT
         //NT   -> rest
         //       | .exp )
-        //call parseRest or if dot: .exp )
+        //call parseRest or if dot call .exp )
 
-        protected Node parseNT(Token tok)
+        protected Node parseNT()
         {
-            if (tok.getType() == TokenType.DOT)
+            Token tok = scanner.getNextToken();
+            if (tok == null)
+                return null;
+            else if (tok.getType() == TokenType.DOT)
             {
-                return new Cons(parseExp(), Nil.getNil());
-            } else
-                return parseRest();
+                Node exp = parseExp();
+                if (exp == null)
+                {
+                    Console.Error.WriteLine("End of file");
+                    return null;
+                }
+                return new Cons(exp, Nil.getNil());
+            }
+            else
+                return parseRest(tok);
         }
         
     }

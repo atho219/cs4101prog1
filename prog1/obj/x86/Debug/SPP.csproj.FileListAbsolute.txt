@@ -8,3 +8,5 @@ C:\Users\Ross\Documents\GitHub\cs4101prog1\prog1\obj\x86\Debug\SPP.pdb
 C:\Users\Adrian\Documents\GitHub\cs4101prog1\prog1\obj\x86\Debug\SPP.exe
 C:\Users\Adrian\Documents\GitHub\cs4101prog1\prog1\obj\x86\Debug\SPP.pdb
 C:\Users\Ross\Documents\GitHub\cs4101prog1\prog1\obj\x86\Debug\SPP.csprojResolveAssemblyReference.cache
+C:\Users\Ross\Documents\GitHub\cs4101prog1\prog1\bin\Debug\SPP.exe
+C:\Users\Ross\Documents\GitHub\cs4101prog1\prog1\bin\Debug\SPP.pdb
