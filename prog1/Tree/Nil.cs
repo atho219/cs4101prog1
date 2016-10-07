@@ -25,9 +25,9 @@ namespace Tree
         public override void print(int n, bool p) {
             printIndent(n);
             if (p)
-                Console.WriteLine(")");
+                Console.Write(")");
             else
-                Console.WriteLine("()");
+                Console.Write("()");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Tree
         public override void print(int n)
         {
             printIndent(n);
-            Console.WriteLine(name);
+            Console.Write(name);
         }
     }
 }

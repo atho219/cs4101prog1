@@ -30,10 +30,9 @@ namespace Tree
         {
             printIndent(n);
             if (boolVal)
-                Console.WriteLine("#t");
+                Console.Write("#t");
             else
-                Console.WriteLine("#f");
-            Console.WriteLine();
+                Console.Write("#f");
         }
     }
 }

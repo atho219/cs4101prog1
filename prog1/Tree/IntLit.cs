@@ -18,7 +18,7 @@ namespace Tree
         public override void print(int n)
         {
             printIndent(n);
-            Console.WriteLine(intVal);
+            Console.Write(intVal);
         }
     }
 }

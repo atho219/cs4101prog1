@@ -139,7 +139,18 @@ namespace Parse
                     Console.Error.WriteLine("End of file");
                     return null;
                 }
-                return new Cons(exp, Nil.getNil());
+                tok = scanner.getNextToken();
+                while (tok != null && tok.getType() != TokenType.RPAREN)
+                {
+                    Console.Error.WriteLine("Only one expression may follow a dot. Missing right paren");
+                    tok = scanner.getNextToken();
+                    if (parseExp(tok) == null)
+                    {
+                        Console.Error.WriteLine("End of file");
+                        return null;
+                    }
+                }
+                return exp;
             }
             else
                 return parseRest(tok);
