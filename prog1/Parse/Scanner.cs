@@ -142,6 +142,13 @@ namespace Parse
                     return new IdentToken(new String(buf, 0, i));
                 }
 
+                //peculiar identifiers
+                else if (ch == '+' || ch == '-')
+                {
+                    buf[0] = (char)ch;
+                    return new IdentToken(new String(buf, 0, 1));
+                }
+
                 // Illegal character
                 else
                 {

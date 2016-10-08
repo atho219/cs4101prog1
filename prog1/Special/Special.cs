@@ -11,11 +11,6 @@ namespace Tree
     abstract public class Special
     {
         public abstract void print(Node t, int n, bool p);
-        public static void printIndent(int n)
-        {
-            for (int i = 0; i < n; i++)
-                Console.Write(" ");
-        }
     }
 }
 

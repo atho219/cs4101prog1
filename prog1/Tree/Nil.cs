@@ -23,7 +23,7 @@ namespace Tree
         public override bool isNull() { return true; }
 
         public override void print(int n, bool p) {
-            printIndent(n);
+            printIndent(n-4);
             if (p)
                 Console.Write(")");
             else

@@ -35,6 +35,11 @@ namespace Tree
             print(n);
         }
 
+        public static void print(Node t, int n, bool p)
+        {
+            t.print(n, p);
+        }
+
         // For parsing Cons nodes, for printing trees, and later for
         // evaluating them, we need some helper functions that test
         // the type of a node and that extract some information.

@@ -13,7 +13,7 @@ namespace Tree
 
         public override void print(Node t, int n, bool p)
         {
-            printIndent(n);
+            //Console.Write("QUOTE ");
 
         }
     }
