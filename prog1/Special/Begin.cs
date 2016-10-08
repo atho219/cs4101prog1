@@ -17,7 +17,7 @@ namespace Tree
             {
                 Node.printIndent(n);
                 Console.WriteLine("(begin");
-                Node.printEnd(t.getCdr(), Math.Abs(n) + 4);
+                Node.printCdr(t.getCdr(), Math.Abs(n) + 4);
             }
             else
                 Node.print(t, n, true);

@@ -111,6 +111,7 @@ namespace Parse
                     Console.Error.WriteLine("End of file");
                     return null;
                 }
+                //rest is anything in parentheses
                 return new Cons(exp, nt);
             }
         }

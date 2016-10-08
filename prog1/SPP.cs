@@ -49,7 +49,9 @@ public class SPP
         Node root;
 
         // Parse and pretty-print each input expression
+        //root contains a tree with all the parsed nodes connected by cars and cdrs
         root = parser.parseExp();
+        //traverse tree and print
         while (root != null) 
         {
             root.print(0);

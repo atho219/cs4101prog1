@@ -22,11 +22,11 @@ namespace Tree
                     Console.Write(' ');
                     Node.print(t.getCdr().getCar(), -(Math.Abs(n) + 4), false);
                     Console.WriteLine();
-                    Node.printEnd(t.getCdr().getCdr(), Math.Abs(n) + 4);
+                    Node.printCdr(t.getCdr().getCdr(), Math.Abs(n) + 4);
                 }
                 else
                 {
-                    Node.printEnd(t.getCdr(), -(Math.Abs(n) + 4));
+                    Node.printCdr(t.getCdr(), -(Math.Abs(n) + 4));
                     Console.WriteLine();
                 }
             }

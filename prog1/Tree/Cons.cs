@@ -29,6 +29,7 @@ namespace Tree
         {
             // TODO: implement this function and any helper functions
             // you might need.
+            //only regulars and identifiers can be in a cons node, so if its not an identifier set the form as a regular, if it is an identifier set the appropriate special to form
             if (!car.isSymbol())
                 form = new Regular();
             else
@@ -57,6 +58,17 @@ namespace Tree
 
         public override bool isPair() { return true; }
 
+        // For classes Cons and Nil, print(n,TRUE) means that the open
+        // parenthesis was printed already by the caller.
+        // Only classes Cons and Nil override print(int, bool).
+        // For correctly indenting special forms, you might need to pass
+        // additional information to print.  What additional information
+        // you pass is up to you.  If you only need one more bit, you can
+        // encode that in the sign bit of n. If you need additional parameters,
+        // make sure that you define the method print in all the appropriate
+        // subclasses of Node as well.
+
+        //since print was called on a cons node, print the cons node by passing the node containing car and cdr, the number of characters to indent, and whether or not the open paren has already been printed
         public override void print(int n)
         {
             form.print(this, n, false);

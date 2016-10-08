@@ -8,6 +8,11 @@ namespace Tree
     {
         // The argument of print(int) is the number of characters to indent.
         // Every subclass of Node must implement print(int).
+        // if n is positive and its a regular or quote node, print newline. if negative on a regular, print a space
+        // if n regular - >  if (n >= 0) writeline else write(' ')
+        // if n quote   - >  if (n >= 0) writeline
+        //       let the regular print spaces (also for quoted lists) by passing it negative value, regular ends line instead if positive value passed
+        // neg values for not indenting and if reg ' ', pos for newline and indent
         public virtual void print(int n) { }
         public static void printIndent(int n)
         {
@@ -15,7 +20,11 @@ namespace Tree
                 Console.Write(" ");
         }
 
-        public static void printEnd(Node t, int n)
+        // essentially printCdr handles ) and . exp ), which may have a newline and indent before it
+        // checks if not cons to handle dots
+        // n positive: go to next line and print reduced indent ) newline
+        // n negative: print )
+        public static void printCdr(Node t, int n)
         {
             if (t.isNull() || t.isPair())
                 print(t, n, true);

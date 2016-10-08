@@ -120,9 +120,9 @@ namespace Parse
                     // TODO: scan an identifier into the buffer :: DONE
                     // make sure that the character following the integer
                     // is not removed from the input stream
-                    int i = 1;
                     Boolean isValidChar;
                     buf[0] = (char)ch;
+                    int i = 1;
                     do
                     {
                         ch = In.Peek();
