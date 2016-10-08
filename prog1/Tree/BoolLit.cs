@@ -33,6 +33,8 @@ namespace Tree
                 Console.Write("#t");
             else
                 Console.Write("#f");
+            if (n >= 0)
+                Console.WriteLine();
         }
     }
 }

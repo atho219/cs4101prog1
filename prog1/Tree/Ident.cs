@@ -24,6 +24,8 @@ namespace Tree
         {
             printIndent(n);
             Console.Write(name);
+            if (n >= 0)
+                Console.WriteLine();
         }
     }
 }

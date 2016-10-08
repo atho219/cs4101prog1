@@ -19,6 +19,8 @@ namespace Tree
         {
             printIndent(n);
             Console.Write("\"" + stringVal + "\"");
+            if (n >= 0)
+                Console.WriteLine();
         }
     }
 }

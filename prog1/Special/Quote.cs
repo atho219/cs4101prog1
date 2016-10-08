@@ -13,8 +13,21 @@ namespace Tree
 
         public override void print(Node t, int n, bool p)
         {
-            //Console.Write("QUOTE ");
-
+            if (!p)
+            {
+                if (t.getCdr().isPair())
+                {
+                    Node.printIndent(n);
+                    Console.Write('\'');
+                    Node.print(t.getCdr().getCar(), -(Math.Abs(n) + 1), false);
+                    if (n >= 0)
+                        Console.WriteLine();
+                }
+                else
+                    Node.print(t, n, false);
+            }
+            else
+                Node.print(t, n, true);
         }
     }
 }

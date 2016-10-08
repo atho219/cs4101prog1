@@ -11,11 +11,22 @@ namespace Tree
 
         public override void print(Node t, int n, bool p)
         {
-            Node.printIndent(n);
             if (!p)
+            {
+                Node.printIndent(n);
                 Console.Write('(');
-            Node.print(t.getCar(), 0, false);
-            Node.print(t.getCdr(), 1, true);
+                Node.print(t.getCar(), -(Math.Abs(n) + 4), false);
+                Node.printEnd(t.getCdr(), -(Math.Abs(n) + 4));
+                if (n >= 0)
+                    Console.WriteLine();
+            }
+            else
+            {
+                if (n < 0)
+                    Console.Write(' ');
+                Node.print(t.getCar(), n, false);
+                Node.printEnd(t.getCdr(), n);
+            }
         }
     }
 }

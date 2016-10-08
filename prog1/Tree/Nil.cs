@@ -28,6 +28,8 @@ namespace Tree
                 Console.Write(")");
             else
                 Console.Write("()");
+            if (n >= 0)
+                Console.WriteLine();
         }
     }
 }

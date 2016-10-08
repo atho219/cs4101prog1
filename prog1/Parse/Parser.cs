@@ -86,13 +86,8 @@ namespace Parse
             else if (tok.getType() == TokenType.IDENT)
                 return new Ident(tok.getName());
             //if none of these, its dot or rparen, which should be impossible in exp
-            else if (tok.getType() == TokenType.DOT)
-            {
-                Console.WriteLine("Invalid input: check dot");
-                return parseExp();
-            }
             else
-                Console.WriteLine("Invalid input: check right parens");
+                Console.WriteLine("Invalid input");
             return parseExp();
         }
 

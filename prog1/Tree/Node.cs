@@ -15,6 +15,29 @@ namespace Tree
                 Console.Write(" ");
         }
 
+        public static void printEnd(Node t, int n)
+        {
+            if (t.isNull() || t.isPair())
+                print(t, n, true);
+            else
+            {
+                if (n >= 0)
+                    printIndent(n);
+                else
+                    Console.Write(' ');
+                Console.Write(". ");
+                print(t, -Math.Abs(n), false);
+                if (n >= 0)
+                {
+                    Console.WriteLine();
+                    printIndent(n - 4);
+                }
+                Console.Write(')');
+                if (n >= 0)
+                    Console.WriteLine();
+            }
+
+        }
         // The first argument of print(int, bool) is the number of characters
         // to indent.  It is interpreted the same as for print(int).
         // The second argument is only useful for lists (nodes of classes
