@@ -17,6 +17,7 @@ namespace Tree
             {
                 Node.printIndent(n);
                 Console.Write("(set!");
+                // n negative to print on same line
                 Node.printCdr(t.getCdr(), -(Math.Abs(n) + 4));
                 Console.WriteLine();
             }

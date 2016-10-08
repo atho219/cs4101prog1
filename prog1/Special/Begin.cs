@@ -17,6 +17,7 @@ namespace Tree
             {
                 Node.printIndent(n);
                 Console.WriteLine("(begin");
+                //increment, make positive to indicate printing on new line
                 Node.printCdr(t.getCdr(), Math.Abs(n) + 4);
             }
             else

@@ -28,8 +28,7 @@ namespace Tree
         void parseList()
         {
             // TODO: implement this function and any helper functions
-            // you might need.
-            //only regulars and identifiers can be in a cons node, so if its not an identifier set the form as a regular, if it is an identifier set the appropriate special to form
+            // you might need. :: DONE
             if (!car.isSymbol())
                 form = new Regular();
             else
@@ -68,7 +67,8 @@ namespace Tree
         // make sure that you define the method print in all the appropriate
         // subclasses of Node as well.
 
-        //since print was called on a cons node, print the cons node by passing the node containing car and cdr, the number of characters to indent, and whether or not the open paren has already been printed
+        //since print was called on a cons node, print the cons node by passing the node containing car and cdr, 
+        //the number of characters to indent (and sign bit), and whether or not the open paren has already been printed
         public override void print(int n)
         {
             form.print(this, n, false);

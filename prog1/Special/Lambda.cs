@@ -20,12 +20,15 @@ namespace Tree
                 if (t.getCdr().isPair())
                 {
                     Console.Write(' ');
+                    // negative n to print on same line
                     Node.print(t.getCdr().getCar(), -(Math.Abs(n) + 4), false);
                     Console.WriteLine();
+                    // positive n because its on a new line
                     Node.printCdr(t.getCdr().getCdr(), Math.Abs(n) + 4);
                 }
                 else
                 {
+                    // if not cons, handle dot/nil. n negative to print on same line
                     Node.printCdr(t.getCdr(), -(Math.Abs(n) + 4));
                     Console.WriteLine();
                 }
@@ -35,4 +38,3 @@ namespace Tree
   	    }
     }
 }
-

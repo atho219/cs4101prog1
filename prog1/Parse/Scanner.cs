@@ -136,7 +136,7 @@ namespace Parse
                             i++;
                         }
                         else isValidChar = false;
-                    }
+              }
                     while (isValidChar);
 
                     return new IdentToken(new String(buf, 0, i));

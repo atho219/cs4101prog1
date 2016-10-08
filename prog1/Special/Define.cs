@@ -11,64 +11,38 @@ namespace Tree
         // TODO: Add an appropriate constructor.
 	public Define() { }
 
-        //cons print overridden by define print because it starts with a special. t = cons node, n = spaces to indent, p if ( already
+        //cons print overridden by define print because it starts with a special
         public override void print(Node t, int n, bool p)
         {
-            /*
-            Node.printIndent(n);
             if (!p)
             {
-                Console.Write("(define ");
-                Node cdr = t.getCdr();
-                if (cdr.isPair())
-                {
-                    Node car = cdr.getCar();
-                    if (car.isPair())
-                    {
-                        Node.print(car, 0, false);
-                        Console.WriteLine();
-                        Node.print(cdr, n + 4, true);
-                    }
-                    else
-                    {
-                        Node.print(cdr, 0, true);
-                        Console.WriteLine();
-                    }
-
-                }
-            }
-            Node.print(t.getCdr(), 0, false);
-            Node.print(t.getCdr(), 1, true);
-            */
-            //if ( hasnt been printed yet
-            if (!p)
-            {
-                //print specified indent before (
                 Node.printIndent(n);
-                //prints L paren and car of cons node
+                //Manually printing ( and car
                 Console.Write("(define");
                 //if cdr of cons node (everything after define) is another cons node
                 if (t.getCdr().isPair())
                 {
-                    //check if car of everything after define is a cons node, aka check if function define rather than variable definition
+                    //check if its t.cdr.car (item after define) is a cons node, if so print it, newline, print the rest
                     if (t.getCdr().getCar().isPair())
                     {
                         Console.Write(' ');
-                        //print 1 space then let the cons node print itself as the correct type, then add 4 to indent, tell the node to print (
-                        // n negative to not print ' ' and to end line after
+                        //n negative to print on same line
                         Node.print(t.getCdr().getCar(), -(Math.Abs(n) + 4), false);
                         Console.WriteLine();
+                        //n positive because printing on new line
                         Node.printCdr(t.getCdr().getCdr(), Math.Abs(n) + 4);
                     }
-                    //if its not a cons node, let it call its own print method and then go to next line
+                    //if its not a cons node print the whole thing and then newline after )
                     else
                     {
+                        //n negative to print items on same line with a space between
                         Node.print(t.getCdr(), -(Math.Abs(n) + 4), true);
                         Console.WriteLine();
                     }
                 }
                 else
                 {
+                    //if not another cons node, dot or nil. negative n so that it wont indent or make a new line
                     Node.printCdr(t.getCdr(), -(Math.Abs(n) + 4));
                     Console.WriteLine();
                 }

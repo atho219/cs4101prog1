@@ -8,11 +8,8 @@ namespace Tree
     {
         // The argument of print(int) is the number of characters to indent.
         // Every subclass of Node must implement print(int).
-        // if n is positive and its a regular or quote node, print newline. if negative on a regular, print a space
-        // if n regular - >  if (n >= 0) writeline else write(' ')
-        // if n quote   - >  if (n >= 0) writeline
-        //       let the regular print spaces (also for quoted lists) by passing it negative value, regular ends line instead if positive value passed
-        // neg values for not indenting and if reg ' ', pos for newline and indent
+        // print utilizes the sign bit to determine if the next print is on the same line or on a new line.
+        // if n is positive (new line), indent before print and newline after print. if negative (same line) just print, unless its a true regular in which case make a space first
         public virtual void print(int n) { }
         public static void printIndent(int n)
         {
@@ -20,33 +17,35 @@ namespace Tree
                 Console.Write(" ");
         }
 
-        // essentially printCdr handles ) and . exp ), which may have a newline and indent before it
-        // checks if not cons to handle dots
-        // n positive: go to next line and print reduced indent ) newline
-        // n negative: print )
+        // separate printCdr function to help handle ) and . exp )
         public static void printCdr(Node t, int n)
         {
+            // if cons/nil, print with closing paren
             if (t.isNull() || t.isPair())
                 print(t, n, true);
+            // .exp )
             else
             {
-                if (n >= 0)
-                    printIndent(n);
-                else
-                    Console.Write(' ');
-                Console.Write(". ");
-                print(t, -Math.Abs(n), false);
+                // if n is positive, the . is on a new line, so indent first, print it, print the exp, go to new line unindent and close paren
                 if (n >= 0)
                 {
+                    printIndent(n);
+                    Console.Write(". ");
+                    print(t, -Math.Abs(n), false);
                     Console.WriteLine();
                     printIndent(n - 4);
+                    Console.WriteLine(')');
                 }
-                Console.Write(')');
-                if (n >= 0)
-                    Console.WriteLine();
+                // if n is negative, print a space and . exp ) on current line
+                else
+                {
+                    Console.Write(" . ");
+                    print(t, -Math.Abs(n), false);
+                    Console.Write(')');
+                }
             }
-
         }
+
         // The first argument of print(int, bool) is the number of characters
         // to indent.  It is interpreted the same as for print(int).
         // The second argument is only useful for lists (nodes of classes

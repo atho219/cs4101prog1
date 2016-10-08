@@ -15,16 +15,13 @@ namespace Tree
         {
             if (!p)
             {
-                if (t.getCdr().isPair())
-                {
-                    Node.printIndent(n);
-                    Console.Write('\'');
-                    Node.print(t.getCdr().getCar(), -(Math.Abs(n) + 1), false);
-                    if (n >= 0)
-                        Console.WriteLine();
-                }
-                else
-                    Node.print(t, n, false);
+                //if (t.getCdr().isPair())
+                Node.printIndent(n);
+                Console.Write('\'');
+                // negative n to print on same line, add 1 to account for ' before (
+                Node.print(t.getCdr().getCar(), -(Math.Abs(n) + 1), false);
+                if (n >= 0)
+                    Console.WriteLine();
             }
             else
                 Node.print(t, n, true);

@@ -14,18 +14,12 @@ namespace Tree
             //if ( hasnt been printed yet
             if (!p)
             {
-                //indent and print (
                 Node.printIndent(n);
                 Console.Write('(');
-                //print car node with proper print method, increment the indent parameter by 4
-                //Negative & False: prints (, doesnt indent/doesnt newline after )
-                //                  spaces if true reg
+                //print car node, increment the indent parameter by 4 to keep track of parens/indentation
+                //negative n to print on same line without indenting or ending the line after
                 Node.print(t.getCar(), -(Math.Abs(n) + 4), false);
-                //print cdr, keep neg so it 
-                // essentially printCdr handles ) and . exp ), which may have a newline and indent before it
-                // checks if not cons to handle dots
-                // n positive: go to next line and print reduced indent ) newline
-                // n negative: print )
+                //n negative to print the cdr on same line
                 Node.printCdr(t.getCdr(), -(Math.Abs(n) + 4));
                 if (n >= 0)
                     Console.WriteLine();

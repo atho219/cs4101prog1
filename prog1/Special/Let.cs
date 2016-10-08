@@ -17,6 +17,7 @@ namespace Tree
             {
                 Node.printIndent(n);
                 Console.WriteLine("(let");
+                // positive n because 2nd item on a new line
                 Node.printCdr(t.getCdr(), Math.Abs(n) + 4);
             }
             else
